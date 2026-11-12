@@ -13,6 +13,7 @@ import me.rexsystems.rexCalendar.util.Notices;
 import me.rexsystems.rexCalendar.util.SchedulerUtils;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.entity.Player;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Map;
@@ -20,6 +21,8 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 public final class RexCalendar extends JavaPlugin {
+
+    private static final int BSTATS_PLUGIN_ID = 35264;
 
     private final ClaimGate claimGate = new ClaimGate();
     private final Set<String> warnings = ConcurrentHashMap.newKeySet();
@@ -54,6 +57,7 @@ public final class RexCalendar extends JavaPlugin {
         }
 
         String mode = configManager.current().storage().mysql() ? "mysql" : "sqlite";
+        new Metrics(this, BSTATS_PLUGIN_ID);
         getLogger().info("RexCalendar enabled. Storage: " + mode + ".");
     }
 
