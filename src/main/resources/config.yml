@@ -1,0 +1,342 @@
+# RexCalendar configuration
+# Messages, titles, item names, and lore accept MiniMessage, legacy & codes, &#RRGGBB, and #RRGGBB.
+# A broken MiniMessage line falls back to legacy codes.
+# {player} is inserted as plain text. Color belongs in the template.
+# Tokens: {player} {uuid} {day} {date} {page} {prefix} {status}
+
+config-version: 1
+
+settings:
+  # ZoneId. The current day is read when a player opens or claims, so midnight needs no restart.
+  # Reload after you change this string. Example: Europe/Bucharest, UTC, America/New_York.
+  timezone: Europe/Bucharest
+  # today-only: the door for today's date. claim-past: today and earlier doors this month.
+  # A future door stays closed. rexcalendar.admin can claim a missed door.
+  missed-days: today-only
+  # 0 stores no address hash and applies no limit.
+  # A positive number is how many different accounts may claim that date for one address hash.
+  ip-limit: 0
+
+worlds:
+  # If this list is not empty, the calendar opens only in these worlds.
+  enabled: []
+  disabled: []
+
+sounds:
+  enabled: true
+  # Bukkit sound name, for example ENTITY_PLAYER_LEVELUP. Empty skips the sound.
+  sound: ENTITY_PLAYER_LEVELUP
+  volume: 1.0
+  pitch: 1.0
+
+title:
+  enabled: true
+  # Times are ticks. 20 ticks is one second. Each value is clamped to 0-1200.
+  text: "<gold>Day {day}"
+  subtitle: "<gray>Claimed"
+  fade-in: 10
+  stay: 40
+  fade-out: 10
+
+actionbar:
+  enabled: true
+  text: "<green>Day {day} claimed"
+  # Ticks before the line is cleared. 20 ticks is one second. 0 leaves the line. Clamped to 0-600.
+  ticks: 60
+
+bossbar:
+  enabled: false
+  text: "<gold>Day {day}"
+  # PINK, BLUE, RED, GREEN, YELLOW, PURPLE, WHITE
+  color: YELLOW
+  # SOLID, SEGMENTED_6, SEGMENTED_10, SEGMENTED_12, SEGMENTED_20
+  style: SOLID
+  # Seconds, clamped between 1 and 60.
+  seconds: 5
+
+gui:
+  # Chest rows, from 1 to 6. The inventory size is this number times 9, 54 at most.
+  rows: 6
+  title: "<white>Calendar <gray>{date}"
+  filler:
+    material: GRAY_STAINED_GLASS_PANE
+    # A blank name hides the tooltip.
+    name: " "
+  day:
+    name: "<gold>Day {day}"
+    lore:
+      - "{status}"
+    available-material: CHEST
+    claimed-material: LIME_DYE
+    missed-material: GRAY_DYE
+    locked-material: BLACK_DYE
+  status:
+    open: "<green>Click to claim"
+    claimed: "<gray>Claimed"
+    missed: "<red>Missed"
+    locked: "<gray>Not open yet"
+  # slot -1 hides the item. Slots continue onto later pages. Nav is painted on top of a shared slot.
+  decoration:
+    - slot: 0
+      material: RED_CANDLE
+      name: ""
+      lore: []
+      custom-model-data: 0
+    - slot: 4
+      material: CLOCK
+      name: "<white>{date}"
+      lore: []
+      custom-model-data: 0
+    - slot: 8
+      material: GREEN_CANDLE
+      name: ""
+      lore: []
+      custom-model-data: 0
+  nav:
+    # Slot is inside one chest. -1 hides the button.
+    previous:
+      slot: 45
+      material: ARROW
+      name: "<gray>Previous"
+      lore: []
+    next:
+      slot: 53
+      material: ARROW
+      name: "<gray>Next"
+      lore: []
+    close:
+      slot: 49
+      material: BARRIER
+      name: "<red>Close"
+      lore: []
+
+# days.<n> is the door for that day of the month. n is 1-31.
+# slot: index in the chest. -1 hides the door. Slot 54 is the first slot of the next page when the chest has 54 slots.
+# Slots above 539 are hidden. material, name, and lore replace the available icon. Claimed, missed, and locked icons stay on gui.day.
+# rewards is a list. Each entry rolls on its own.
+# chance: 0-100, default 100. commands run as console. Tokens: {player} {uuid} {day} {date}
+# items: material, amount (1-2304), name, lore, custom-model-data. 0 leaves the model unset.
+# Item rewards that do not fit leave the day unclaimed. Command rewards are not measured against free slots.
+# If every entry misses, the day is still claimed and messages.no-reward is sent.
+# A day with no rewards is not claimed.
+days:
+  1:
+    slot: 10
+    rewards:
+      - chance: 100
+        commands: []
+        items:
+          - material: COOKIE
+            amount: 16
+            name: "<gold>Day {day} cookie"
+            lore:
+              - "<gray>{date}"
+            custom-model-data: 0
+  2:
+    slot: 11
+    rewards:
+      - chance: 100
+        items:
+          - material: BREAD
+            amount: 8
+  3:
+    slot: 12
+    rewards:
+      - chance: 100
+        items:
+          - material: TORCH
+            amount: 32
+  4:
+    slot: 13
+    rewards:
+      - chance: 100
+        items:
+          - material: COAL
+            amount: 16
+  5:
+    slot: 14
+    rewards:
+      - chance: 100
+        items:
+          - material: IRON_INGOT
+            amount: 4
+  6:
+    slot: 15
+    rewards:
+      - chance: 100
+        items:
+          - material: COOKED_BEEF
+            amount: 8
+  7:
+    slot: 16
+    rewards:
+      - chance: 100
+        items:
+          - material: GOLDEN_CARROT
+            amount: 4
+  8:
+    slot: 19
+    rewards:
+      - chance: 100
+        items:
+          - material: ARROW
+            amount: 16
+  9:
+    slot: 20
+    rewards:
+      - chance: 100
+        items:
+          - material: GOLD_INGOT
+            amount: 4
+  10:
+    slot: 21
+    rewards:
+      - chance: 100
+        items:
+          - material: GOLDEN_APPLE
+            amount: 1
+  11:
+    slot: 22
+    rewards:
+      - chance: 100
+        items:
+          - material: EMERALD
+            amount: 2
+  12:
+    slot: 23
+    rewards:
+      - chance: 100
+        items:
+          - material: LAPIS_LAZULI
+            amount: 16
+  13:
+    slot: 24
+    rewards:
+      - chance: 100
+        commands:
+          - "xp add {player} 10 points"
+        items:
+          - material: EXPERIENCE_BOTTLE
+            amount: 4
+  14:
+    slot: 25
+    rewards:
+      - chance: 100
+        items:
+          - material: NAME_TAG
+            amount: 1
+  15:
+    slot: 28
+    rewards:
+      - chance: 100
+        items:
+          - material: ENDER_PEARL
+            amount: 2
+  16:
+    slot: 29
+    rewards:
+      - chance: 100
+        items:
+          - material: HONEY_BOTTLE
+            amount: 4
+  17:
+    slot: 30
+    rewards:
+      - chance: 100
+        items:
+          - material: DIAMOND
+            amount: 1
+  18:
+    slot: 31
+    rewards:
+      - chance: 100
+        items:
+          - material: PUMPKIN_PIE
+            amount: 8
+  19:
+    slot: 32
+    rewards:
+      - chance: 100
+        items:
+          - material: FIREWORK_ROCKET
+            amount: 8
+  20:
+    slot: 33
+    rewards:
+      - chance: 100
+        items:
+          - material: AMETHYST_SHARD
+            amount: 16
+  21:
+    slot: 34
+    rewards:
+      - chance: 100
+        items:
+          - material: SPYGLASS
+            amount: 1
+  22:
+    slot: 38
+    rewards:
+      - chance: 100
+        items:
+          - material: COOKED_COD
+            amount: 8
+  23:
+    slot: 39
+    rewards:
+      - chance: 100
+        items:
+          - material: DIAMOND
+            amount: 2
+  24:
+    slot: 40
+    material: NETHER_STAR
+    name: "<gold>Day {day}"
+    rewards:
+      - chance: 100
+        commands: []
+        items:
+          - material: DIAMOND
+            amount: 1
+            name: "<aqua>Calendar diamond"
+            lore:
+              - "<gray>{date}"
+            custom-model-data: 0
+      - chance: 25
+        commands:
+          - "xp add {player} 50 points"
+        items: []
+
+messages:
+  prefix: "<gray>[<#f75634>RexCalendar<gray>] "
+  no-permission: "{prefix}<red>You do not have permission to do that."
+  reload: "{prefix}<green>Configuration reloaded."
+  claim: "{prefix}<green>You claimed day {day}."
+  already-claimed: "{prefix}<red>You already claimed day {day}."
+  too-early: "{prefix}<red>Day {day} is not open yet."
+  missed: "{prefix}<red>Day {day} has passed."
+  ip-limit: "{prefix}<red>Too many accounts have claimed day {day} from your network."
+  no-reward: "{prefix}<gray>Day {day} had nothing this time."
+  inventory-full: "{prefix}<red>Your inventory is full. Day {day} was not claimed."
+  claim-failed: "{prefix}<red>The reward could not be given. Day {day} was not claimed."
+  world: "{prefix}<red>The calendar is closed in this world."
+  players-only: "{prefix}<red>Only players can do that."
+  help-header: "{prefix}<white>RexCalendar"
+  help:
+    - "<gray>/rexcalendar open <dark_gray>- <white>Open the calendar"
+    - "<gray>/rexcalendar reload <dark_gray>- <white>Reload the configuration"
+    - "<gray>/rexcalendar help <dark_gray>- <white>Show this help"
+
+storage:
+  # sqlite or mysql. sqlite writes plugins/RexCalendar/calendar.db.
+  # Reload reads config.yml and leaves claims in place. It does not reconnect storage.
+  type: sqlite
+  mysql:
+    host: 127.0.0.1
+    port: 3306
+    database: rexcalendar
+    username: calendar
+    password: ""
+    # Clamped to 1-20.
+    pool-size: 4
+    ssl: false

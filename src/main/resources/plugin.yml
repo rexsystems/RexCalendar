@@ -1,0 +1,154 @@
+name: RexCalendar
+version: '${project.version}'
+main: me.rexsystems.rexCalendar.RexCalendar
+api-version: '1.21'
+folia-supported: true
+authors: [RexSystems]
+description: Advent calendar rewards for Paper servers
+website: https://rexsystems.me
+softdepend: [PlaceholderAPI]
+
+commands:
+  rexcalendar:
+    description: Open the calendar, reload, or show help
+    aliases: [rcal, rcalendar]
+    usage: /rexcalendar <open|reload|help>
+
+permissions:
+  rexcalendar.use:
+    description: Open the calendar and claim a day
+    default: true
+  rexcalendar.reload:
+    description: Reload RexCalendar
+    default: op
+  rexcalendar.admin:
+    description: Claim a missed day and skip the IP limit
+    default: op
+  rexcalendar.day.*:
+    description: Claim every calendar day
+    default: true
+    children:
+      rexcalendar.day.1: true
+      rexcalendar.day.2: true
+      rexcalendar.day.3: true
+      rexcalendar.day.4: true
+      rexcalendar.day.5: true
+      rexcalendar.day.6: true
+      rexcalendar.day.7: true
+      rexcalendar.day.8: true
+      rexcalendar.day.9: true
+      rexcalendar.day.10: true
+      rexcalendar.day.11: true
+      rexcalendar.day.12: true
+      rexcalendar.day.13: true
+      rexcalendar.day.14: true
+      rexcalendar.day.15: true
+      rexcalendar.day.16: true
+      rexcalendar.day.17: true
+      rexcalendar.day.18: true
+      rexcalendar.day.19: true
+      rexcalendar.day.20: true
+      rexcalendar.day.21: true
+      rexcalendar.day.22: true
+      rexcalendar.day.23: true
+      rexcalendar.day.24: true
+      rexcalendar.day.25: true
+      rexcalendar.day.26: true
+      rexcalendar.day.27: true
+      rexcalendar.day.28: true
+      rexcalendar.day.29: true
+      rexcalendar.day.30: true
+      rexcalendar.day.31: true
+  rexcalendar.day.1:
+    description: Claim calendar day 1
+    default: true
+  rexcalendar.day.2:
+    description: Claim calendar day 2
+    default: true
+  rexcalendar.day.3:
+    description: Claim calendar day 3
+    default: true
+  rexcalendar.day.4:
+    description: Claim calendar day 4
+    default: true
+  rexcalendar.day.5:
+    description: Claim calendar day 5
+    default: true
+  rexcalendar.day.6:
+    description: Claim calendar day 6
+    default: true
+  rexcalendar.day.7:
+    description: Claim calendar day 7
+    default: true
+  rexcalendar.day.8:
+    description: Claim calendar day 8
+    default: true
+  rexcalendar.day.9:
+    description: Claim calendar day 9
+    default: true
+  rexcalendar.day.10:
+    description: Claim calendar day 10
+    default: true
+  rexcalendar.day.11:
+    description: Claim calendar day 11
+    default: true
+  rexcalendar.day.12:
+    description: Claim calendar day 12
+    default: true
+  rexcalendar.day.13:
+    description: Claim calendar day 13
+    default: true
+  rexcalendar.day.14:
+    description: Claim calendar day 14
+    default: true
+  rexcalendar.day.15:
+    description: Claim calendar day 15
+    default: true
+  rexcalendar.day.16:
+    description: Claim calendar day 16
+    default: true
+  rexcalendar.day.17:
+    description: Claim calendar day 17
+    default: true
+  rexcalendar.day.18:
+    description: Claim calendar day 18
+    default: true
+  rexcalendar.day.19:
+    description: Claim calendar day 19
+    default: true
+  rexcalendar.day.20:
+    description: Claim calendar day 20
+    default: true
+  rexcalendar.day.21:
+    description: Claim calendar day 21
+    default: true
+  rexcalendar.day.22:
+    description: Claim calendar day 22
+    default: true
+  rexcalendar.day.23:
+    description: Claim calendar day 23
+    default: true
+  rexcalendar.day.24:
+    description: Claim calendar day 24
+    default: true
+  rexcalendar.day.25:
+    description: Claim calendar day 25
+    default: true
+  rexcalendar.day.26:
+    description: Claim calendar day 26
+    default: true
+  rexcalendar.day.27:
+    description: Claim calendar day 27
+    default: true
+  rexcalendar.day.28:
+    description: Claim calendar day 28
+    default: true
+  rexcalendar.day.29:
+    description: Claim calendar day 29
+    default: true
+  rexcalendar.day.30:
+    description: Claim calendar day 30
+    default: true
+  rexcalendar.day.31:
+    description: Claim calendar day 31
+    default: true
