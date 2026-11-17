@@ -35,4 +35,4 @@ Aliases: `/rcal`, `/rcalendar`
 | `rexcalendar.admin` | op | Claim a missed day and skip the address limit |
 | `rexcalendar.day.<n>` | true | Claim that day number. Set it to false to close the door |
 
-Documentation: https://rexsystems.me/docs/rexcalendar
+Documentation: https://docs.rexsystems.me/rexcalendar/

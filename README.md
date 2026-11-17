@@ -46,7 +46,7 @@ Aliases: `/rcal`, `/rcalendar`
 
 The pages in [docs/](docs/index.md) drop into a Starlight site at `src/content/docs/rexcalendar/`. Paste `docs/sidebar.mjs` into the site sidebar.
 
-Full docs: [https://rexsystems.me/docs/rexcalendar](https://rexsystems.me/docs/rexcalendar)
+Full docs: [https://docs.rexsystems.me/rexcalendar/](https://docs.rexsystems.me/rexcalendar/)
 
 ## License
 
